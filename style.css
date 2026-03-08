@@ -1,0 +1,224 @@
+/* 1. SETUP & FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Roboto:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #050505; /* Deep Black */
+    color: #eeeeee;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 2. NAVIGATION (Color Convention) */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(15px);
+    position: fixed;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav h2 {
+    color: #39ff14;
+    font-size: 24px;
+    margin: 0;
+    text-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+}
+
+nav ul li {
+    font-weight: 700;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-transform: uppercase;
+}
+
+/* Nav Hover Colors - The Convention */
+nav ul li:nth-child(1):hover { color: #39ff14; text-shadow: 0 0 10px #39ff14; } /* Home: Green */
+nav ul li:nth-child(2):hover { color: #1e90ff; text-shadow: 0 0 10px #1e90ff; } /* Flavors: Blue */
+nav ul li:nth-child(3):hover { color: #ff8c00; text-shadow: 0 0 10px #ff8c00; } /* About: Orange */
+nav ul li:nth-child(4):hover { color: #ff2e2e; text-shadow: 0 0 10px #ff2e2e; } /* Contact: Red */
+
+/* 3. HERO SECTION (Video + Jagged Edge) */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Innovative Sharp Edge Design */
+    clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%);
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(5,5,5,1) 90%);
+    z-index: -1;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: clamp(60px, 10vw, 120px);
+    color: #39ff14;
+    text-shadow: 0 0 40px rgba(57, 255, 20, 0.6);
+    margin: 0;
+    line-height: 0.9;
+    animation: entranceBlur 1.2s ease-out;
+}
+
+@keyframes entranceBlur {
+    0% { filter: blur(20px); opacity: 0; transform: scale(1.1); }
+    100% { filter: blur(0); opacity: 1; transform: scale(1); }
+}
+
+.hero p {
+    font-size: 1.5rem;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+/* Pulse Button */
+.pulse-btn {
+    padding: 18px 50px;
+    background: #39ff14;
+    border: none;
+    color: #000;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.5);
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pulse-btn:hover {
+    transform: scale(1.1) rotate(-2deg);
+    background: #ffffff;
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.6);
+}
+
+/* 4. FLAVORS SECTION (3D Cards) */
+.flavors {
+    padding: 150px 20px 100px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    color: #fff;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    perspective: 1000px; /* Needed for 3D effect */
+}
+
+.card {
+    width: 260px;
+    background: linear-gradient(145deg, #111, #080808);
+    border-radius: 20px;
+    padding: 40px 20px;
+    border: 1px solid #222;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card img {
+    width: 100%;
+    height: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+    transition: 0.5s;
+}
+
+.card h3 {
+    margin-top: 25px;
+    font-size: 1.5rem;
+}
+
+.card:hover {
+    transform: translateY(-20px) rotateX(10deg) rotateY(10deg);
+}
+
+/* Card Glow Colors */
+.green:hover { border-color: #39ff14; box-shadow: 0 0 30px rgba(57, 255, 20, 0.2); }
+.red:hover   { border-color: #ff2e2e; box-shadow: 0 0 30px rgba(255, 46, 46, 0.2); }
+.blue:hover  { border-color: #1e90ff; box-shadow: 0 0 30px rgba(30, 144, 255, 0.2); }
+.orange:hover{ border-color: #ff8c00; box-shadow: 0 0 30px rgba(255, 140, 0, 0.2); }
+
+/* 5. ABOUT SECTION */
+.about {
+    padding: 120px 10%;
+    background: #000;
+    text-align: center;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about h2 {
+    color: #39ff14;
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #777;
+}
+
+/* 6. FOOTER */
+footer {
+    padding: 50px;
+    text-align: center;
+    background: #000;
+    color: #333;
+    border-top: 1px solid #111;
+    font-weight: bold;
+}
